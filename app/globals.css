@@ -1,0 +1,33 @@
+/* Fluid Functionalism theme, copied from ajbridges/design-system v0.1.0 (tokens/theme.css). */
+@import "./theme.css";
+@import "tw-animate-css";
+@import "./fluid-touch.css";
+
+/*
+ * Jazzfolio brand layer.
+ * Accent #0054FE as primary, Inter for body, DM Sans for headings.
+ * TODO: move these into tokens/tokens.json in the design-system repo and drop this block.
+ */
+:root {
+  --primary: oklch(0.531 0.26 262.687); /* #0054FE */
+  --primary-foreground: oklch(1 0 0);
+  --sidebar-primary: oklch(0.531 0.26 262.687);
+  --ring: oklch(0.531 0.26 262.687 / 60%);
+}
+
+.dark {
+  --primary: oklch(0.62 0.21 262.687);
+  --primary-foreground: oklch(1 0 0);
+  --sidebar-primary: oklch(0.62 0.21 262.687);
+  --ring: oklch(0.62 0.21 262.687 / 60%);
+}
+
+@theme inline {
+  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "DM Sans Variable", "DM Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  h1, h2, h3 { font-family: var(--font-heading); letter-spacing: -0.02em; }
+  html { -webkit-tap-highlight-color: transparent; }
+}

@@ -1,0 +1,47 @@
+/*
+ * Fluid Touch: the phone layer on Fluid Functionalism.
+ *
+ * - One breakpoint, 768px (matches use-mobile and Tailwind `md`).
+ * - Below it, or on any touch screen, every control is at least 44px.
+ * - Controls are pills.
+ * - The app shell swaps the side menu for a top bar and a bottom tab bar (see components/app-shell.tsx).
+ *
+ * TODO: move this into the design-system repo as tokens + a `fluid-touch` registry item.
+ */
+:root {
+  --ft-breakpoint: 768px;
+  --ft-target: 2.75rem; /* 44px */
+  --ft-tabbar-height: 4rem;
+}
+
+[data-slot="button"],
+[data-slot="toggle"],
+[data-slot="toggle-group-item"] {
+  border-radius: 9999px;
+}
+
+@media (max-width: 767px), (pointer: coarse) {
+  [data-slot="button"],
+  [data-slot="toggle"],
+  [data-slot="toggle-group-item"] {
+    min-height: var(--ft-target);
+    min-width: var(--ft-target);
+  }
+
+  [data-slot="input"],
+  [data-slot="textarea"] {
+    font-size: 16px; /* stops iOS zooming into fields */
+  }
+}
+
+.ft-tabbar-space {
+  padding-bottom: calc(var(--ft-tabbar-height) + env(safe-area-inset-bottom));
+}
+
+@media (min-width: 768px) {
+  .ft-tabbar-space { padding-bottom: 0; }
+}
+
+.ft-safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
