@@ -81,11 +81,12 @@ export function LibraryProvider({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const timeout = window.setTimeout(() => {
+    // Run after paint so this does not change the tree mid-hydration.
+    const frame = window.requestAnimationFrame(() => {
       setLibrary(parse(window.localStorage.getItem(STORAGE_KEY)));
       setReady(true);
-    }, 0);
-    return () => window.clearTimeout(timeout);
+    });
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
   const commit = useCallback((recipe: (current: Library) => Library) => {
