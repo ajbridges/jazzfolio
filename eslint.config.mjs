@@ -13,6 +13,13 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  // Registry components ship a plain img for poster art. Don't fork the file to satisfy Next's image rule.
+  {
+    files: ["src/components/ui/**/*.{ts,tsx}"],
+    rules: {
+      "@next/next/no-img-element": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;
