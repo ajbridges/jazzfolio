@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "TZ=America/Los_Angeles next dev",
+    "build": "TZ=America/Los_Angeles next build",
+    "start": "TZ=America/Los_Angeles next start",
     "lint": "eslint",
     "check:ds": "node scripts/check-design-system.mjs"
   },

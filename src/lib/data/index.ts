@@ -141,3 +141,18 @@ export function getShowsForVenue(id: string) {
     .filter((show) => show.venueId === id)
     .sort((a, b) => (startsAt(a) < startsAt(b) ? -1 : 1));
 }
+
+export function listEvents() {
+  assertCatalog();
+  return listShows();
+}
+
+export function listPeople() {
+  assertCatalog();
+  return listArtists();
+}
+
+export function listRooms() {
+  assertCatalog();
+  return listVenues();
+}

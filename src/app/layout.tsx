@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Barlow_Condensed, Inter } from "next/font/google";
 import "./globals.css";
+import { AppShell } from "@/components/app-shell";
+import { LibraryProvider } from "@/lib/library";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({
@@ -30,7 +33,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         barlowCondensedHeading.variable,
       )}
     >
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <LibraryProvider>
+          <Suspense fallback={<div className="min-h-full flex-1 pb-20 md:pl-64">{children}</div>}>
+            <AppShell>{children}</AppShell>
+          </Suspense>
+        </LibraryProvider>
+      </body>
     </html>
   );
 }
