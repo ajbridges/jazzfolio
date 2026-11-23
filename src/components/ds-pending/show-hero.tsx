@@ -48,7 +48,9 @@ export function ShowHero({
             {neighborhood}
           </p>
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-sm font-medium tabular-nums md:text-base">{price}</span>
+            {price ? (
+              <span className="text-sm font-medium tabular-nums md:text-base">{price}</span>
+            ) : null}
             <TicketStatusPill status={status} />
           </div>
         </div>

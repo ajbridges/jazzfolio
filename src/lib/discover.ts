@@ -63,7 +63,7 @@ export function toCard(show: Show, venues: Map<string, Venue>): CardModel | null
     venue: venue.name,
     venueId: venue.id,
     neighborhood: venue.neighborhood,
-    price: show.priceLabel,
+    price: show.priceLabel === "No cover" ? "" : show.priceLabel,
     status: show.status,
     summary: show.summary,
     artistIds: show.artistIds,

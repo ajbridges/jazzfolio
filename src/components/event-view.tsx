@@ -63,7 +63,7 @@ export function EventView({
         date={pacificWallClock(startsAt)}
         venue={venueName}
         neighborhood={neighborhood}
-        price={price}
+        price={price === "No cover" ? "" : price}
         status={toPillStatus(status)}
         tint={tintFor(id)}
         actions={
