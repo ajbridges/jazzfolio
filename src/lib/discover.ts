@@ -103,7 +103,10 @@ export function buildDiscover(posts: FeedSource[], shows: Show[], venues: Venue[
     return [{ kind: "show" as const, at: show.startsAt, show }];
   });
 
-  const feed = [...feedPosts, ...feedShows].sort((a, b) => (a.at < b.at ? 1 : -1));
+  const feed = [
+    ...feedPosts.sort((a, b) => (a.at < b.at ? 1 : -1)),
+    ...feedShows.sort((a, b) => (a.at < b.at ? -1 : 1)),
+  ];
 
   return { tonight, feed, shows: [...cards.values()] };
 }

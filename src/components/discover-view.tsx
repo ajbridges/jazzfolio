@@ -33,7 +33,7 @@ export function DiscoverView({
 
       <TonightStrip title="Tonight">
         {tonight.map((show) => (
-          <div key={show.id} className="w-72 shrink-0 md:w-80">
+          <div key={show.id} className="w-72 shrink-0 md:w-[32rem]">
             <WiredCard show={show} variant="compact" />
           </div>
         ))}
